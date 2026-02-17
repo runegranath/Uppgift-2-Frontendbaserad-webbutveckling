@@ -94,3 +94,44 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+body {
+  margin: 0 auto;
+  background-color: #f4efef;
+  color: #213547;
+  max-width: 900px;
+}
+
+#main {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+table {
+  width: 100%;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 12px 8px;
+  border-bottom: 1px solid #c8c1c1;
+}
+
+h2 {
+  font-size: medium;
+}
+
+#search {
+  width: 88%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 4px;
+}
+
+#course-code, #course-name, #course-list {
+  cursor: pointer;
+  text-decoration: underline;
+}

@@ -1,13 +1,32 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>vite-project</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>vite-project</title>
+</head>
+
+<body>
+  <main id="main">
+    <p><strong>Sök:</strong></p>
+    <input type="text" id="search" placeholder="Sök...">
+    <table>
+      <thead>
+        <tr>
+          <th id="course-code">Kurskod</th>
+          <th id="course-name">Namn</th>
+          <th id="course-progression">Progression</th>
+        </tr>
+      </thead>
+      <tbody id="courses-list"></tbody>
+
+
+
+    </table>
+  </main>
+  <script type="module" src="/src/main.js"></script>
+</body>
+
 </html>
