@@ -2,55 +2,72 @@ import "./style.css";
 
 let allcourses = [];
 
+let courseCodeSortDirection = "asc";
+
+let courseNameSortDirection = "asc";
+
+let courseProgressionSortDirection = "asc";
+
 document.addEventListener("DOMContentLoaded", async () => {
   getData();
+  document.querySelector("#search").addEventListener("input", () => {
+    console.log(allcourses);
+    const writtenSearch = document.querySelector("#search").value.toLowerCase();
+    const filteredCourses = allcourses.filter((course) => {
+      return (
+        course.coursename.toLowerCase().includes(writtenSearch) ||
+        course.code.toLowerCase().includes(writtenSearch)
+      );
+    });
+    displayCourses(filteredCourses); 
+  });
 
   document.querySelector("#course-code").addEventListener("click", () => {
+    console.log("clicked");
     const sortedByCode = [...allcourses].sort((a, b) =>
-      a.code.localCompare(b.code),
+      a.code.localeCompare(b.code),
     );
-    displayCourses(sortedByCode);
+    const sorted =
+      courseCodeSortDirection === "asc" ? sortedByCode.reverse() : sortedByCode;
+    displayCourses(sorted);
+    courseCodeSortDirection =
+      courseCodeSortDirection === "asc" ? "desc" : "asc";
   });
 
   document.querySelector("#course-name").addEventListener("click", () => {
     const sortedByName = [...allcourses].sort((a, b) =>
-      a.coursename.localCompare(b.code),
+      a.coursename.localeCompare(b.coursename),
     );
-    displayCourses(sortedByName);
+    const sorted =
+      courseNameSortDirection === "asc" ? sortedByName.reverse() : sortedByName;
+    displayCourses(sorted);
+    courseNameSortDirection =
+      courseNameSortDirection === "asc" ? "desc" : "asc";
   });
 
-  document.querySelector("#course-progression").addEventListener("click", () => {
-    const sortedByProgression = [...allcourses].sort((a, b) =>
-      a.progression.localCompare(b.code),
-    );
-    displayCourses(sortedByProgression);
-  });
+  document
+    .querySelector("#course-progression")
+    .addEventListener("click", () => {
+      const sortedByProgression = [...allcourses].sort((a, b) =>
+        a.progression.localeCompare(b.progression),
+      );
+      const sorted =
+      courseProgressionSortDirection === "asc" ? sortedByProgression.reverse() : sortedByProgression;
+    displayCourses(sorted);
+    courseProgressionSortDirection =
+      courseProgressionSortDirection === "asc" ? "desc" : "asc";
+    });
 });
-
-window.onload = () => {
-  document.querySelector("#search").addEventListener("input", filterData);
-};
 
 async function getData() {
   try {
-    const response = await fetch("../src/ramschema.json");
+    const response = await fetch("src/ramschema.json");
     const data = await response.json();
     allcourses = data;
     displayCourses(data);
   } catch (error) {
     console.error(error);
   }
-}
-
-function filterData(getData) {
-  const searchPhrase = document.querySelector("#search").value.toLowerCase();
-  const filteredCourses = allcourses.filter(
-    (course) =>
-      course.name.toLowerCase().includes(searchPhrase) ||
-      course.code.toLowerCase().includes(searchPhrase) ||
-      course.progression.toLowerCase().includes(searchPhrase),
-  );
-  displayCourses(filteredCourses);
 }
 
 function displayCourses(courses) {

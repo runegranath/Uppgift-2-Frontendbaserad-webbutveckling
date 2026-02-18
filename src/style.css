@@ -131,7 +131,7 @@ h2 {
   border-radius: 4px;
 }
 
-#course-code, #course-name, #course-list {
+#course-code, #course-name, #course-progression {
   cursor: pointer;
   text-decoration: underline;
 }
