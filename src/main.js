@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 async function getData() {
   try {
-    const response = await fetch("./src/ramschema.json");
+    const response = await fetch("./ramschema.json");
     const data = await response.json();
     allcourses = data;
     displayCourses(data);
